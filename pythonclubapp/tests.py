@@ -1,5 +1,8 @@
 from django.test import TestCase
+from django.urls import reverse
 from .models import meeting, meetingminutes, resource, event
+from .views import newResource, getresources
+from django.contrib.auth.models import User
 
 # Tests the 'meeting' model
 class MeetingTitleTest(TestCase):
@@ -37,3 +40,13 @@ class EventTest(TestCase):
     
     def test_table(self):
         self.assertEqual(str(event._meta.db_table), 'event')
+    
+# Tests a logged in user can access the Resource form
+class ResourceFormTest(TestCase):
+    def test_view(self):
+        self.test_user=User.objects.create_user(username='testuser1', password='P@ssw0rd1')
+        login=self.client.login(username='testuser1', password='P@ssw0rd1')
+        response = self.client.get(reverse('newresource'))
+        self.assertEqual(str(response.context['user']), 'testuser1')
+        self.assertEqual(response.status_code, 200) #tests view
+        self.assertTemplateUsed(response, 'pythonclubapp/newresource.html') #tests template
