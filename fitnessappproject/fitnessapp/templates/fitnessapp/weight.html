@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Weight Stats</h1>
+<table class='table'>
+ <tr>
+     <th>Weight</th>
+     <th>Height</th>
+     <th>Date</th>
+ </tr>
+ {% for t in type_list %}
+   <tr>
+       <td>{{ t.weight }}</td>
+       <td>{{ t.height }}</td>
+       <td>{{ t.weightdate }}</td>
+   </tr>
+
+ {% endfor %}
+
+
+</table>
+
+
+{% endblock %}

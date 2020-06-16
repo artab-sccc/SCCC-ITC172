@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Workouts</h1>
+<table class='table'>
+ <tr>
+     <th>Current Weight</th>
+     <th>Workout Name</th>
+     <th>Minutes</th>
+     <th>Reps</th>
+     <th>Sets</th>
+     <th>Workout Date</th>
+ </tr>
+ {% for t in type_list %}
+   <tr>
+       <td>{{ t.currentweight }}</td>
+       <td>{{ t.workoutname }}</td>
+       <td>{{ t.minutes }}</td>
+       <td>{{ t.reps}}</td>
+       <td>{{ t.sets }}</td>
+       <td>{{ t.workoutdate }}</td>
+   </tr>
+
+ {% endfor %}
+
+
+</table>
+
+
+{% endblock %}

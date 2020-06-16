@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Meals</h1>
+<table class='table'>
+ <tr>
+     <th>Current Weight</th>
+     <th>Meal Name</th>
+     <th>Meal Calories</th>
+     <th>Meal Carbs</th>
+     <th>Meal Protien</th>
+     <th>Meal Fats</th>
+     <th>Meal Date</th>
+ </tr>
+ {% for t in type_list %}
+   <tr>
+       <td>{{ t.currentweight }}</td>
+       <td>{{ t.mealname }}</td>
+       <td>{{ t.mealcalories }}</td>
+       <td>{{ t.mealcarbs }}</td>
+       <td>{{ t.mealprotien }}</td>
+       <td>{{ t.mealfats }}</td>
+       <td>{{ t.mealdate }}</td>
+   </tr>
+
+ {% endfor %}
+
+</table>
+
+
+{% endblock %}
